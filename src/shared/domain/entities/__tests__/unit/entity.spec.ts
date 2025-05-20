@@ -30,4 +30,15 @@ describe('Entity unit tests', ()=>{
     expect(entity._id).toBe(id);
   })
 
+  it('Should convert an entity to a Javascript Object', ()=>{
+    const props = { prop1: 'value1', prop2: 15};
+    const id = '43503e8f-a854-4fcc-9f3a-6f347faf28e9';
+    const entity = new StubEntity(props, id);
+
+    expect(entity.toJSON()).toStrictEqual({
+      id,
+      ...props
+    })
+  })
+
 })
