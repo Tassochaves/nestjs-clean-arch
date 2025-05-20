@@ -1,13 +1,16 @@
+import { Entity } from "@/shared/domain/entities/entity";
+
 export type UserProps = {
   name: string;
   email: string;
   password: string;
-  createdAt?: Date
+  createdAt?: Date;
 }
 
-export class UserEntity {
-  constructor(readonly props: UserProps){
-    this.props.createdAt = this.props.createdAt ?? new Date()
+export class UserEntity extends Entity<UserProps>{
+  constructor(readonly props: UserProps, id?: string){
+    super(props, id);
+    this.props.createdAt = this.props.createdAt ?? new Date();
   }
 
   get name(){
