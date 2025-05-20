@@ -7,6 +7,7 @@ type StubProps = {
   prop1: string;
   prop2: number;
 }
+
 //classe dublê
 class StubEntity extends Entity<StubProps>{}
 

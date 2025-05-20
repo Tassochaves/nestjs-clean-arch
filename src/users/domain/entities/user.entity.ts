@@ -8,13 +8,28 @@ export type UserProps = {
 }
 
 export class UserEntity extends Entity<UserProps>{
+
   constructor(readonly props: UserProps, id?: string){
     super(props, id);
     this.props.createdAt = this.props.createdAt ?? new Date();
   }
 
+  //Methods (Comportamentos de Domínio)
+  update(value: string): void{
+    this.name = value;
+  }
+
+  updatePassword(value: string): void{
+    this.password = value;
+  }
+
+  //Getters e Setters
   get name(){
     return this.props.name;
+  }
+
+  private set name(value: string){
+    this.props.name = value;
   }
 
   get email(){
@@ -23,6 +38,10 @@ export class UserEntity extends Entity<UserProps>{
 
   get password(){
     return this.props.password;
+  }
+
+  private set password(value: string){
+    this.props.password = value;
   }
 
   get createdAt(){
